@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: KFA;
+  src: url('/fonts/KranaFat-A.woff2');
+}
+
+@font-face {
+  font-family: MSB-Regular;
+  src: url('/fonts/MSBee-Regular.woff2');
+}
+
+@font-face {
+  font-family: mono-light;
+  src: url('/fonts/MonoLight.woff2');
+}
+
+@font-face {
+  font-family: MSB-bold;
+  src: url('/fonts/MSBee-Bold.woff2');
+}
+
+@font-face {
+  font-family: MSB-light;
+  src: url('/fonts/MSBee-Light.woff2');
+}
+
+@font-face {
+  font-family: mono-regular;
+  src: url('/fonts/MonoRegular.woff2');
+}
+
+/* overide tippy css */
+.tippy-box {
+  background-color: #fff;
+  color: #000;
+  border-radius: 20px !important;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  font-family: MSB-Regular;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+}
+
+.golden,
+.golden::after,
+.golden::before {
+  background: linear-gradient(-45deg, #ffd580, #f0a925, #ffe56f, #f6b547);
+  background-size: 200% 200%;
+}
+
+.selfie,
+.selfie::after,
+.selfie::before {
+  background: linear-gradient(-45deg, #b43939, #d93939, #fc7e8c, #f64747);
+  background-size: 200% 200%;
+}
+
+.text-golden {
+  background: linear-gradient(-45deg, #ffd580, #f0a925, #ffe56f, #f6b547);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-selfie {
+  background: linear-gradient(-45deg, #b43939, #d93939, #fc7e8c, #f64747);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.shadow-me {
+  box-shadow: 0 1px 1px rgb(0 0 0 / 8%), 0 2px 2px rgb(0 0 0 / 8%), 0 4px 4px rgb(0 0 0 / 8%), 0 8px 8px rgb(0 0 0 / 8%), 0 16px 16px rgb(0 0 0 / 8%);
+}
