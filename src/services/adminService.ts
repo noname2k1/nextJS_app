@@ -38,7 +38,7 @@ const getUsers = async (page = 1, limit = 30) => {
 };
 
 const addCharacter = async (
-  character: 'azuki' | 'bean',
+  character: string,
   data: {
     name: string;
     attributes: string;
@@ -48,7 +48,7 @@ const addCharacter = async (
   const formData = new FormData();
   formData.append('name', data.name);
   formData.append('attributes', data.attributes);
-  formData.append('image', data.image);
+  formData.append('image', data.image[0]);
   try {
     const res = await withAuthMultipartFormData.post(
       '/api/v1/admin/' + character,

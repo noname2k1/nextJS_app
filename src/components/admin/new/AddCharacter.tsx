@@ -2,8 +2,11 @@
 import { FormInput } from '@/components/Customs/form/molecules/FormInput';
 import { FormTextarea } from '@/components/Customs/form/molecules/FormTextarea';
 import { appConstants } from '@/config/constants';
+import categories from '@/datas/admin/constants';
+import { addCharacter } from '@/services/adminService';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -27,6 +30,8 @@ const schema = yup.object().shape({
 });
 
 const AddCharacter = (props: Props) => {
+  const { query } = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -49,7 +54,11 @@ const AddCharacter = (props: Props) => {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      //   const res = await addUser(data);
+      if (query.category === categories.azuki) {
+        await addCharacter(categories.azuki, data);
+      } else if (query.category === categories.beanz) {
+        await addCharacter(categories.beanz, data);
+      }
       toast.success('add character successful');
       resetForm();
     } catch (error: any) {

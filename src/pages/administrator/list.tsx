@@ -1,16 +1,9 @@
 import Pagination from '@/components/Customs/Pagination';
 import pathNames from '@/config/pathNames';
 import categories from '@/datas/admin/constants';
-import {
-  CharacterTableHeader,
-  SongTableHeader,
-  UserTableHeader,
-} from '@/datas/admin/listHeader';
-import {
-  CharTableBody,
-  SongTableBody,
-  UserTableBody,
-} from '@/datas/admin/listTbody';
+import CharTable from '@/datas/admin/table/CharTable';
+import SongTable from '@/datas/admin/table/SongTable';
+import UserTable from '@/datas/admin/table/UserTable';
 import AdminLayout from '@/layouts/admin';
 import { getUsers } from '@/services/adminService';
 import { getAzukis } from '@/services/azukiService';
@@ -250,28 +243,23 @@ const ListPage = (props: Props) => {
             />
           </div>
         </div>
-        <table className='w-full text-left text-sm text-gray-500 dark:text-gray-400'>
-          {category &&
-            [categories.azuki, categories.beanz].indexOf(category as string) !==
-              -1 && (
-              <>
-                <CharacterTableHeader />
-                <CharTableBody items={items} />
-              </>
-            )}
-          {category === categories.song && (
-            <>
-              <SongTableHeader />
-              <SongTableBody items={items} />
-            </>
-          )}
-          {category === categories.user && (
-            <>
-              <UserTableHeader />
-              <UserTableBody items={items} />
-            </>
-          )}
-        </table>
+
+        {[categories.azuki, categories.beanz].includes(category as string) && (
+          <>
+            <CharTable items={items} />
+          </>
+        )}
+        {categories.song === category && (
+          <>
+            <SongTable items={items} />
+          </>
+        )}
+        {categories.user === category && (
+          <>
+            <UserTable items={items} />
+          </>
+        )}
+
         {total > 30 && <Pagination perpage={30} total={total} />}
       </div>
     </AdminLayout>

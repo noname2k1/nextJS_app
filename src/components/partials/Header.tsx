@@ -48,7 +48,7 @@ const Header = ({ className, isDark = true }: Props) => {
         pathName.includes(pathNames.gallery)
           ? 'bg-white text-black dark:bg-gray-900 dark:text-white max-[710px]:px-2 lg:bg-transparent lg:pb-4 lg:dark:bg-transparent'
           : ''
-      }`}
+      } pb-4`}
     >
       <Link
         href={pathNames.home}

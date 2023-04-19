@@ -166,9 +166,7 @@ const AddUser = (props: Props) => {
             {...register('role')}
             className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
           >
-            <option selected value='user'>
-              Choose a role
-            </option>
+            <option value='user'>Choose a role</option>
             <option value='user'>user</option>
             <option value='mod'>mod</option>
             <option value='admin'>admin</option>
