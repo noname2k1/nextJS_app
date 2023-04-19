@@ -14,6 +14,7 @@ const pathNames = {
   updates: '/updates',
   license: '/license',
   termsandconditions: '/termsandconditions',
+  manager: '/administrator',
 };
 
 export default pathNames;

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { LogoWhite } from './Icons';
+import { LogoWhite } from '../Icons';
 import { useRouter } from 'next/router';
 import pathNames from '@/config/pathNames';
 import useGlobalStore from '@/store/GlobalStore';
 import headerRightSideList from '@/datas/headerRightSideList';
-import DropDownMenu from './Customs/DropDownMenu';
+import DropDownMenu from '../Customs/DropDownMenu';
 import { HeaderItem } from '@/config/interfaces';
 
 interface Props {

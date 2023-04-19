@@ -42,22 +42,12 @@ module.exports = {
         wave3: 'wave 2s linear infinite',
         'bounce-horizontal':
           'bounce-horizontal 1s cubic-bezier(0,0,0.2,1) infinite',
+        circular: 'circular 1s linear infinite',
       },
       keyframes: {
         fade: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
-        },
-        gradient: {
-          '0%': {
-            'background-position': '0 50%',
-          },
-          '50%': {
-            'background-position': '100% 50%',
-          },
-          '100%': {
-            'background-position': '0 50%',
-          },
         },
         up: {
           from: {
@@ -104,6 +94,14 @@ module.exports = {
           },
           '100%': {
             transform: 'translateX(-25%)',
+          },
+        },
+        circular: {
+          '0%': {
+            transform: 'rotate(0deg)',
+          },
+          '100%': {
+            transform: 'rotate(360deg)',
           },
         },
       },

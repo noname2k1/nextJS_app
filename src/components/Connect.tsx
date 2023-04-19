@@ -6,7 +6,7 @@ interface Props {
   data: Connect[];
 }
 
-const Connect = ({ data }: Props) => {
+const ConnectComponent = ({ data }: Props) => {
   const { pathname, query, push } = useRouter();
   const handleBack = () => {
     push(pathname, undefined, { shallow: true });
@@ -44,4 +44,4 @@ const Connect = ({ data }: Props) => {
   );
 };
 
-export default Connect;
+export default ConnectComponent;

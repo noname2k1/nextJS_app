@@ -19,7 +19,6 @@ interface GalleryState {
   count: number;
   error: Error;
   page: number;
-  target: 'azuki' | 'bean' | 'goldenAzuki';
   // methods
   setItems: (payload: Azuki[]) => void;
   addItems: (payload: Azuki[]) => void;
@@ -30,67 +29,64 @@ interface GalleryState {
   setCount: (payload: number) => void;
   setError: (payload: Error) => void;
   setPage: (payload: number) => void;
-  setTarget: (paload: 'azuki' | 'bean' | 'goldenAzuki') => void;
 }
 
 const useGalleryStore = create<GalleryState>()(
-  devtools((set) => ({
-    items: [],
-    filterValue: '',
-    childsSelected: [],
-    sumOfAttrSelected: 0,
-    charListFilter: [],
-    count: 0,
-    error: {
-      status: 200,
-      message: '',
-    },
-    page: 1,
-    target: 'azuki',
-    setItems: (payload: Azuki[]) =>
-      set(() => ({
-        items: payload,
-      })),
-    addItems: (payload: Azuki[]) =>
-      set((state) => ({
-        items: [...state.items, ...payload],
-      })),
-    setFilterValue: (payload: string) =>
-      set((state) => ({
-        filterValue: payload,
-      })),
-    setChildsSelected: (payload: ChildsSelected[]) =>
-      set((state) => ({
-        childsSelected: payload,
-      })),
-    setSumOfAttrSelected: (payload: number) =>
-      set((state) => ({
-        sumOfAttrSelected: payload,
-      })),
-
-    setCharListFilter: (payload: Azuki[]) =>
-      set((state) => ({
-        charListFilter: payload,
-      })),
-    setCount: (payload: number) =>
-      set((state) => ({
-        count: payload,
-      })),
-    setError: (payload: Error) =>
-      set((state) => ({
-        error: payload,
-      })),
-    setPage(payload: number) {
-      set((state) => ({
-        page: payload,
-      }));
-    },
-    setTarget(payload: 'azuki' | 'bean' | 'goldenAzuki') {
-      set((state) => ({
-        target: payload,
-      }));
-    },
-  }))
+  devtools(
+    (set) => ({
+      items: [],
+      filterValue: '',
+      childsSelected: [],
+      sumOfAttrSelected: 0,
+      charListFilter: [],
+      count: 0,
+      error: {
+        status: 200,
+        message: '',
+      },
+      page: 1,
+      setItems: (payload: Azuki[]) =>
+        set(() => ({
+          items: payload,
+        })),
+      addItems: (payload: Azuki[]) =>
+        set((state) => ({
+          items: [...state.items, ...payload],
+        })),
+      setFilterValue: (payload: string) =>
+        set((state) => ({
+          filterValue: payload,
+        })),
+      setChildsSelected: (payload: ChildsSelected[]) =>
+        set((state) => ({
+          childsSelected: payload,
+        })),
+      setSumOfAttrSelected: (payload: number) =>
+        set((state) => ({
+          sumOfAttrSelected: payload,
+        })),
+      setCharListFilter: (payload: Azuki[]) =>
+        set((state) => ({
+          charListFilter: payload,
+        })),
+      setCount: (payload: number) =>
+        set((state) => ({
+          count: payload,
+        })),
+      setError: (payload: Error) =>
+        set((state) => ({
+          error: payload,
+        })),
+      setPage(payload: number) {
+        set((state) => ({
+          page: payload,
+        }));
+      },
+    }),
+    {
+      name: 'galleryStore',
+    }
+  )
 );
 
 if (process.env.NODE_ENV === 'development') {

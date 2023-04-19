@@ -11,7 +11,8 @@ import {
 import { useRouter } from 'next/router';
 import pathNames from '@/config/pathNames';
 import { appConstants } from '@/config/constants';
-import songList from '@/datas/songsData';
+import { getSongs } from '@/services/songService';
+// import songs from '@/datas/songsData';
 
 interface Props {}
 
@@ -28,6 +29,7 @@ const Music = (props: Props) => {
     pathName.includes(path)
   );
 
+  const [songs, setSongs] = useState<any[]>([]);
   const [expand, setExpand] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [songIndex, setSongIndex] = useState(0);
@@ -66,13 +68,13 @@ const Music = (props: Props) => {
     if (songIndex > 0) {
       setSongIndex(songIndex - 1);
     } else {
-      setSongIndex(songList.length - 1);
+      setSongIndex(songs.length - 1);
     }
     setPlaying(true);
   };
 
   const handleNextSong = () => {
-    if (songIndex < songList.length - 1) {
+    if (songIndex < songs.length - 1) {
       setSongIndex(songIndex + 1);
     } else {
       setSongIndex(0);
@@ -165,9 +167,17 @@ const Music = (props: Props) => {
     }
   }, [textBlack]);
 
+  useEffect(() => {
+    const fetchSongs = async () => {
+      const res = await getSongs(0);
+      setSongs(res.songs);
+    };
+    fetchSongs();
+  }, []);
+
   return (
     <div
-      className={`fixed bottom-8 left-0 z-[1003] h-14 select-none px-8 dark:text-white`}
+      className={`fixed bottom-8 left-0 z-[1003] h-14 select-none px-8 dark:text-white max-[420px]:hidden`}
     >
       <div
         className={`${expand ? 'cursor-default' : 'cursor-pointer'} ${
@@ -279,11 +289,11 @@ const Music = (props: Props) => {
               {!shrinkMusicBar && (
                 <>
                   <h2 className='truncate font-bold dark:text-white'>
-                    {songList[songIndex].name}
+                    {songs[songIndex]?.name}
                   </h2>
                   <h3 className='truncate text-xs opacity-40 dark:text-white'>
-                    {songList[songIndex].singer
-                      ? songList[songIndex].singer
+                    {songs[songIndex]?.singer
+                      ? songs[songIndex]?.singer
                       : 'unknown'}
                   </h3>
                 </>
@@ -316,10 +326,11 @@ const Music = (props: Props) => {
           </div>
         )}
         <audio
-          src={songList[songIndex].src}
+          src={songs[songIndex]?.src}
           onEnded={handleNextSong}
           ref={musicRef}
           autoPlay
+          loop
           playsInline
         ></audio>
         <div
@@ -351,10 +362,10 @@ const Music = (props: Props) => {
             } flex w-[80%] rounded-xl border-t border-black/20 bg-white py-3 shadow-md duration-200`}
           >
             <div className='flex h-full w-[100%] flex-col items-center overflow-y-auto rounded-xl bg-white px-3 scrollbar-none'>
-              {songList.map((song, index) => (
+              {songs.map((song, index) => (
                 <div
                   className={`${
-                    song.id === songList[songIndex].id
+                    song._id === songs[songIndex]?._id
                       ? 'w-full rounded-lg py-4 opacity-75'
                       : `w-[92%] cursor-pointer ${
                           index === songIndex - 1 ? '' : 'border-b'
@@ -372,7 +383,7 @@ const Music = (props: Props) => {
                       {song.singer ? song.singer : 'unknown'}
                     </p>
                   </div>
-                  {song.id === songList[songIndex].id && (
+                  {song._id === songs[songIndex]?._id && (
                     <div
                       className='flex items-end justify-center px-4'
                       onClick={handleExpand}

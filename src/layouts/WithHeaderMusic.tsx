@@ -1,4 +1,4 @@
-import Header from '@/components/Header';
+import Header from '@/components/partials/Header';
 import React from 'react';
 import { NextPage, NextComponentType, NextPageContext } from 'next';
 // import Music from '@/components/Music';

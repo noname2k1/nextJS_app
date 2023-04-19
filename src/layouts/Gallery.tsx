@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Header from '@/components/Header';
+import Header from '@/components/partials/Header';
 import React, {
   useRef,
   useState,

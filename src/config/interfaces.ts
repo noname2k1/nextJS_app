@@ -27,6 +27,8 @@ interface Error {
   [key: string]: any;
   status?: number;
   message?: string;
+  error?: string;
+  success?: boolean;
 }
 
 // Header
