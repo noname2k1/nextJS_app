@@ -8,11 +8,7 @@ const withAuthInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   headers: {
     Authorization: `Bearer ${useAuthStore.getState().token}`,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    'Access-Control-Allow-Headers':
-      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
-    'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Allow-Origin': process.env.NEXT_PUBLIC_BASE_URL,
   },
   withCredentials: true,
 
