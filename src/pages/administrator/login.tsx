@@ -60,9 +60,9 @@ const LoginPage = (props: Props) => {
     } catch (error: unknown) {
       if (isAxiosError(error)) {
         const resError = error.response?.data;
-        resError.message
-          ? setError(resError.message)
-          : setError(resError.error);
+        resError?.message
+          ? setError(resError?.message)
+          : setError(resError?.error);
       }
     }
     setLoading(false);

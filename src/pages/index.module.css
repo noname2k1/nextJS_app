@@ -1,0 +1,28 @@
+.container {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media screen and (max-width: 1024px) {
+  .video-bg {
+    display: none;
+  }
+}
+
+.image-cover {
+  width: auto;
+  height: 100%;
+  display: none;
+  object-fit: cover;
+}
+@media screen and (max-width: 1024px) {
+  .image-cover {
+    display: block;
+  }
+}/*# sourceMappingURL=index.module.css.map */
